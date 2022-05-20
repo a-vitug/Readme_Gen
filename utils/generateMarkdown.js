@@ -21,83 +21,75 @@ const licenseContent = [
   }
 ];
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
 function renderLicenseBadge(data) {
   for (let i = 0; i < licenseContent.length; i++) {
     if (data.license == licenseContent[i].licenses) {
-      return licenseContent[i].badge;
-    } else {
       return data;
+    } else {
+      return licenseContent[i].badge;
     }
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(data) {
   for (let i = 0; i < licenseContent.length; i++) {
     if (data.license == licenseContent[i].licenses) {
-      return licenseContent[i].link;
-    } else {
       return data;
+    } else {
+      return licenseContent[i].link;
     }
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 function renderLicenseSection(data) {
   for (let i = 0; i < licenseContent.length; i++) {
     if (data.license == licenseContent[i].licenses) {
       return (
-        licenseContent[i].licenses +
-        '/n' +
-        renderLicenseBadge(data) +
-        '/n' +
-        renderLicenseLink(data)
+        data
       );
     } else {
-      return data;
+      return (
+        licenseContent[i].licenses + `\n` + renderLicenseBadge(data) + `\n` +
+        `\n` + renderLicenseLink(data)
+      );
     }; 
   }
 };
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 
-    ## Description
-        - ${data.description}
+## Description
+- ${data.description}
 
-    ------------
+------------
 
-    ## Table of Contents
-        - [Installation](#installation)
-        - [Usage](#usage)
-        - [Contributor](contributor)
-        - [License](#license)
-        - [Contact](#contact)
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributor](contributor)
+- [License](#license)
+- [Contact](#contact)
 
-    ------------
+------------
 
-    ## Installation 
-        Below are the instructions on installing the site.
-            ${data.installation}
+## Installation 
+- Below are the instructions on installing the site.
+${data.installation}
 
-    ## Usage
-        ${data.usage}
+## Usage
+- ${data.usage}
 
-    ## Contributor
-        Here are the contributor(s) of the site --> ${contributor}
-    
-    ------------
+## Contributor
+- Here are the contributor(s) of the site --> ${data.contributor}
 
-    ## License
-        ${renderLicenseSection(data)}
+------------
 
-    ### Questions
-        You can contact me through my Github ${github} and LinkedIn ${linkedin}. 
+## License 
+${renderLicenseSection(data.license)}
+
+### Questions
+-You can contact me through my Github ( ${data.github} ) and LinkedIn ( ${data.linkedin} ). 
 `;
 }
 
