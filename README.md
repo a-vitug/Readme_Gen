@@ -39,7 +39,7 @@ git clone
 - Here are the contributor(s) of the site --> Allyson(me)
 
 ## Demo
-![readme-gif](./assets/readme-gen.gif)
+Click the link to view the demo -> https://www.youtube.com/watch?v=yCxYdTRRy0E&ab_channel=devtools
 
 ------------
 
